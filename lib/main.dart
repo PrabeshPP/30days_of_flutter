@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,//bascially remove the debug from the top right corner
       
       themeMode:ThemeMode.light,
-      theme: ThemeData(primarySwatch: Colors.blue,
+      theme: ThemeData(primarySwatch: Colors.red,
       fontFamily: GoogleFonts.lato().fontFamily
       ),
       darkTheme: ThemeData(brightness: Brightness.dark),
