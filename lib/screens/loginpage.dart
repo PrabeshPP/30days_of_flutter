@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 class  Login extends StatelessWidget {
   
@@ -18,21 +20,67 @@ class  Login extends StatelessWidget {
 
          ),
          ),
-         TextFormField(
-           decoration: InputDecoration(
-             hintText: "username",
-             labelText: "UserName"
-              
+         Padding(
+           padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 10),
+           child: Column(
+             children: [
+               TextFormField(
+                 cursorColor: Colors.lightBlue,
+                 decoration: InputDecoration(
+                    labelText: "UserName",
+                   hintText: "Enter Username",
+                   labelStyle:TextStyle(
+                     color: Colors.black,
+                     fontWeight: FontWeight.w500),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.deepPurple,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide()
+                  )
+                    
 
-           ),
-         ),
+                 ),
+                 
+               ),
+               SizedBox(
+                 height: 10,
+               ),
 
         TextFormField(
-          decoration: InputDecoration(
-            hintText: "password",
-            labelText: "Password"
-          ),
+          obscureText: true,
+                decoration: InputDecoration(
+                   labelText: "Password",
+                  hintText: "Enter Password",
+                  labelStyle: TextStyle(color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.deepPurple
+                    ),
+                  ),
+                 border: OutlineInputBorder(
+                   borderSide: BorderSide()
+                 )
+                ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+
+        ElevatedButton(child: Text("Login"),
+        onPressed: (){
+
+        },
+      style:ButtonStyle(shape:),
         )
+             ],
+             
+           ),
+         )
        ],
      ),
       
