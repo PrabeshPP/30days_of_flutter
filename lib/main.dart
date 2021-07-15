@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/homepage.dart';
 import 'package:flutter_application_1/screens/loginpage.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -17,14 +18,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,//bascially remove the debug from the top right corner
       
-      themeMode:ThemeMode.light,
+      themeMode:ThemeMode.system,
       theme: ThemeData(primarySwatch: Colors.red,
       fontFamily: GoogleFonts.lato().fontFamily
       ),
       darkTheme: ThemeData(brightness: Brightness.dark),
       routes: {
-        "/":(context)=>Login(),
-        "/home":(context)=>Homepage()
+        MyRoutes.loginRoute:(context)=>Login(),
+        MyRoutes.homeRoute:(context)=>Homepage()
       },
     );
     
