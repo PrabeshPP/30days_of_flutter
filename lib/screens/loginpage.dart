@@ -1,9 +1,16 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String name = " ";
+  bool changed = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,7 +23,7 @@ class Login extends StatelessWidget {
               height: 50,
             ),
             Text(
-              "Welcome",
+              "Welcome ${name != "" ? name + "!" : name}",
               style: TextStyle(
                   fontSize: 20,
                   color: Colors.deepPurple,
@@ -29,16 +36,21 @@ class Login extends StatelessWidget {
                   TextFormField(
                     cursorColor: Colors.lightBlue,
                     decoration: InputDecoration(
-                        labelText: "UserName",
-                        hintText: "Enter Username",
-                        labelStyle: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w500),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.deepPurple,
-                          ),
+                      labelText: "UserName",
+                      hintText: "Enter Username",
+                      labelStyle: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.w500),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.deepPurple,
                         ),
-                        border: OutlineInputBorder(borderSide: BorderSide())),
+                      ),
+                      border: OutlineInputBorder(borderSide: BorderSide()),
+                    ),
+                    onChanged: (value) {
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   SizedBox(
                     height: 10,
@@ -60,19 +72,38 @@ class Login extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                    child: Text("Login",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.blue)),
-                    onPressed: () {
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        changed = true;
+                      });
+                      await Future.delayed(Duration(seconds: 1));
                       Navigator.pushNamed(context, MyRoutes.homeRoute);
                     },
-                    style: TextButton.styleFrom(
-                        shadowColor: Colors.pink,
-                        backgroundColor: Colors.yellow,
-                        minimumSize: Size(100, 50)),
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      height: 50,
+                      width: changed ? 50 : 120,
+                      alignment: Alignment.center,
+                      child: changed
+                          ? Icon(
+                              Icons.done,
+                              color: Colors.pink,
+                              size: 30,
+                            )
+                          : Text(
+                              "Login",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                      decoration: BoxDecoration(
+                          color: Colors.yellow,
+                          borderRadius:
+                              BorderRadius.circular(changed ? 50 : 8)),
+                    ),
                   )
                 ],
               ),
