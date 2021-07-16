@@ -10,10 +10,7 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       
       appBar: AppBar(
-        centerTitle: false,
-        title: Text("Catlog App",
-        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
-        ),
+        title: Text("Catlog App"),
       ),
       body: Center(
           child:Text("I started learning flutter again") ,

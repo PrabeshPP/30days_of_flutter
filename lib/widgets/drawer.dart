@@ -32,42 +32,42 @@ class Mydrawer extends StatelessWidget {
             
             ListTile(
               leading:Icon(CupertinoIcons.home,
-              color: Colors.black,
+              color: Colors.blueGrey,
               size: 30,
               ),
               title: Text("Home",
               textScaleFactor: 1.2,
-              style: TextStyle(color: Colors.black,
+              style: TextStyle(color: Colors.blueGrey,
               fontWeight: FontWeight.w600),),
             ),
 
             ListTile(
               leading:Icon(CupertinoIcons.profile_circled,
-              color: Colors.black,
+              color: Colors.blueGrey,
               size: 30,),
               title: Text("My Profile",
               textScaleFactor: 1.2,
-              style: TextStyle(color: Colors.black,
+              style: TextStyle(color: Colors.blueGrey,
               fontWeight: FontWeight.bold),),
             ),
 
                 ListTile(
               leading:Icon(CupertinoIcons.cart,
-              color: Colors.black,
+              color: Colors.blueGrey,
               size: 30,),
               title: Text("Cart",
               textScaleFactor: 1.2,
-              style: TextStyle(color: Colors.black,
+              style: TextStyle(color: Colors.blueGrey,
               fontWeight: FontWeight.bold),),
             ),
               ListTile(
               
               leading:Icon(CupertinoIcons.creditcard_fill,
-              color: Colors.black,
+              color: Colors.blueGrey,
               size: 30,),
               title: Text("Payment options",
               textScaleFactor: 1.2,
-              style: TextStyle(color: Colors.black,
+              style: TextStyle(color: Colors.blueGrey,
               fontWeight: FontWeight.bold),),
             ),
             
@@ -75,11 +75,11 @@ class Mydrawer extends StatelessWidget {
 
                 ListTile(
               leading:Icon(CupertinoIcons.question_circle,
-              color: Colors.black,
+              color: Colors.blueGrey,
               size: 30,),
               title: Text("Help",
               textScaleFactor: 1.2,
-              style: TextStyle(color: Colors.black,
+              style: TextStyle(color: Colors.blueGrey,
               fontWeight: FontWeight.bold),),
             )
 
