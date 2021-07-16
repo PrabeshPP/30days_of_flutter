@@ -18,11 +18,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,//bascially remove the debug from the top right corner
       
-      themeMode:ThemeMode.system,
+      themeMode:ThemeMode.light,
       theme: ThemeData(primarySwatch: Colors.red,
       fontFamily: GoogleFonts.lato().fontFamily
       ),
       darkTheme: ThemeData(brightness: Brightness.dark),
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         MyRoutes.loginRoute:(context)=>Login(),
         MyRoutes.homeRoute:(context)=>Homepage()

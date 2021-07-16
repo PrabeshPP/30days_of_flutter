@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/drawer.dart';
 class Homepage extends StatelessWidget {
   const Homepage({ Key? key }) : super(key: key);
 
@@ -9,7 +10,7 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       
       appBar: AppBar(
-        centerTitle: true,
+        centerTitle: false,
         title: Text("Catlog App",
         style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
         ),
@@ -19,7 +20,7 @@ class Homepage extends StatelessWidget {
           ),
 
         
-      drawer: Drawer(),
+      drawer: Mydrawer(),
     
     );
   }
