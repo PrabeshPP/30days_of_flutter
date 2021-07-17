@@ -1,27 +1,95 @@
+import 'dart:convert';
+
 class CatlogModel {
-  static final items = [
-    Items(id: 1,
-     name:"one plus 7", 
-     description:"One plus 7 with --8 GB of Ram and 256 GB of storage",
-      price: 70000, 
-      color: "red", 
-      image: "https://cdn.opstatics.com/store/20170907/assets/images/events/instant-noodle/19821/pics/full/3.webp"),
-  ];
+  static List<Items>? items;
 }
 
 class Items {
   final num id;
   final String name;
-  final String description;
+  final String desc;
   final num price;
   final String color;
   final String image;
 
-  Items(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.price,
-      required this.color,
-      required this.image});
+  Items({
+    required this.id,
+    required this.name,
+    required this.desc,
+    required this.price,
+    required this.color,
+    required this.image,
+  });
+
+  Items copyWith({
+    num? id,
+    String? name,
+    String? desc,
+    num? price,
+    String? color,
+    String? image,
+  }) {
+    return Items(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      desc: desc ?? this.desc,
+      price: price ?? this.price,
+      color: color ?? this.color,
+      image: image ?? this.image,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'desc': desc,
+      'price': price,
+      'color': color,
+      'image': image,
+    };
+  }
+
+  factory Items.fromMap(Map<String, dynamic> map) {
+    return Items(
+      id: map['id'],
+      name: map['name'],
+      desc: map['desc'],
+      price: map['price'],
+      color: map['color'],
+      image: map['image'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Items.fromJson(String source) => Items.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'Items(id: $id, name: $name, desc: $desc, price: $price, color: $color, image: $image)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Items &&
+        other.id == id &&
+        other.name == name &&
+        other.desc == desc &&
+        other.price == price &&
+        other.color == color &&
+        other.image == image;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        name.hashCode ^
+        desc.hashCode ^
+        price.hashCode ^
+        color.hashCode ^
+        image.hashCode;
+  }
 }
