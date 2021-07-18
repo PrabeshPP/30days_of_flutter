@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,12 +38,38 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: Text("Catlog App"),
       ),
-      body:(CatlogModel.items !=null && CatlogModel.items!.isNotEmpty)?   ListView.builder(
-          itemCount: CatlogModel.items?.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(item: CatlogModel.items?[index]);
-          }):
-          Center(child: CircularProgressIndicator(),),
+      body: (CatlogModel.items != null && CatlogModel.items!.isNotEmpty)
+          ? GridView.builder(
+            itemCount: CatlogModel.items?.length,
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              itemBuilder: (context, index) {
+                final item = CatlogModel.items![index];
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  
+                    child: GridTile(
+                      header: Container(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(item.name.toString(),
+                          style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                          ),
+                          
+                        ),
+                        decoration: BoxDecoration(color: Colors.red),),
+                    child: Image.network(item.image)
+                  )
+                  ),
+                );
+              },
+            )
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
       drawer: Mydrawer(),
     );
   }
