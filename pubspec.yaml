@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   google_fonts: ^2.1.0
   vm_service: ^7.1.1
+  velocity_x: ^3.3.0
 
 dev_dependencies:
   flutter_test:
