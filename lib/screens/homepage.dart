@@ -1,9 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/widgets/home_widgets/catloglist.dart';
+import 'package:flutter_application_1/widgets/home_widgets/header_widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_application_1/models/catlog.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
+
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -35,39 +38,25 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
         backgroundColor: Mytheme.creamColor,
         body: SafeArea(
+          
           child: Container(
-            
               padding: Vx.m32,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CatlogHeader(),
-
-                  
+                  if (CatlogModel.items != null &&
+                      CatlogModel.items!.isNotEmpty)
+                    CatlogList().py16().expand()
+                  else
+                    Center(
+                      child: CircularProgressIndicator().py64().py64().py64().py64().py32(),
+                    )
                 ],
               )),
         ));
   }
 }
-
-class CatlogHeader extends StatelessWidget {
-  const CatlogHeader({ Key? key }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        "Catalog App".text.xl5.bold.color(Mytheme.darkBluishColor).make(),
-        "Trending products".text.bold.color(Colors.red).xl.make()
-      ],
-      
-      
-    );
-  }
-}
-
-
 
 
 
