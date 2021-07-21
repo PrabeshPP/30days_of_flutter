@@ -8,7 +8,10 @@ class Cartpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      
+      appBar: AppBar(
+        backgroundColor:context.canvasColor ,
+      ),
       body:Container(
         child: Center(child: "Comming Soon!".text.bold.xl.make()),
       ) ,

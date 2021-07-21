@@ -35,11 +35,11 @@ class CatalogItems extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            catalog.name.toString().text.xl.bold.make(),
+            catalog.name.toString().text.xl.bold.color(context.accentColor).make(),
             catalog.desc
                 .toString()
                 .text
-                .textStyle(context.captionStyle!)
+                .textStyle(context.captionStyle!).color(context.accentColor)
                 .make(),
             ButtonBar(
               alignment: MainAxisAlignment.spaceBetween,
@@ -63,6 +63,6 @@ class CatalogItems extends StatelessWidget {
           ],
         ))
       ],
-    )).white.roundedLg.square(150).make().py16();
+    )).color(context.cardColor).roundedLg.square(150).make().py16();
   }
 }

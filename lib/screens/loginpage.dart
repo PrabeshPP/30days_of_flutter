@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 
 class Login extends StatefulWidget {
   @override
@@ -28,7 +30,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color:context.canvasColor ,
       child: SingleChildScrollView(
         child: Form(
           key: _formkey,
@@ -42,7 +44,7 @@ class _LoginState extends State<Login> {
                 "Welcome ${name != "" ? name + "!" : name}",
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.deepPurple,
+                    color: context.accentColor,
                     fontWeight: FontWeight.bold),
               ),
               Padding(
@@ -51,18 +53,24 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     TextFormField(
-                      cursorColor: Colors.lightBlue,
+                      style:TextStyle(color: context.accentColor),
+                      cursorColor: context.accentColor,
                       decoration: InputDecoration(
                         labelText: "UserName",
                         hintText: "Enter Username",
+                        hintStyle: TextStyle(
+                          color: context.accentColor
+                        ),
                         labelStyle: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w500),
+                            color: context.accentColor, fontWeight: FontWeight.w500),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.deepPurple,
+                            color:context.accentColor,
                           ),
                         ),
-                        border: OutlineInputBorder(borderSide: BorderSide()),
+                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 2,
+                          color: context.accentColor
+                        )),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -80,18 +88,24 @@ class _LoginState extends State<Login> {
                       height: 10,
                     ),
                     TextFormField(
+                      style: TextStyle(color: context.accentColor),
+                      cursorColor: context.accentColor,
                       obscureText: true,
                       decoration: InputDecoration(
                           labelText: "Password",
                           hintText: "Enter Password",
+                          hintStyle: TextStyle(
+                            color: context.accentColor
+                          ),
                           labelStyle: TextStyle(
-                              color: Colors.black,
+                              color: context.accentColor,
                               fontSize: 15,
                               fontWeight: FontWeight.w500),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepPurple),
+                            borderSide: BorderSide(color: context.accentColor),
                           ),
-                          border: OutlineInputBorder(borderSide: BorderSide())),
+                          enabledBorder: OutlineInputBorder(borderSide:
+                           BorderSide(width: 2,color: context.accentColor))),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "password cannot be empty";
