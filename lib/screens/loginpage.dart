@@ -68,6 +68,9 @@ class _LoginState extends State<Login> {
                             color:context.accentColor,
                           ),
                         ),
+                        border: OutlineInputBorder(borderSide: BorderSide(
+
+                        )),
                         enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 2,
                           color: context.accentColor
                         )),
@@ -104,6 +107,9 @@ class _LoginState extends State<Login> {
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: context.accentColor),
                           ),
+                          border: OutlineInputBorder(borderSide: BorderSide(
+                            
+                          )),
                           enabledBorder: OutlineInputBorder(borderSide:
                            BorderSide(width: 2,color: context.accentColor))),
                       validator: (value) {

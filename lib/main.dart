@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,//bascially remove the debug from the top right corner
       
-      themeMode:ThemeMode.system,
+      themeMode:ThemeMode.light,
       theme:Mytheme.lightTheme(context) ,
       darkTheme: Mytheme.darkTheme(context),
-      initialRoute: MyRoutes.loginRoute,
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         MyRoutes.loginRoute:(context)=>Login(),
         MyRoutes.homeRoute:(context)=>Homepage(),

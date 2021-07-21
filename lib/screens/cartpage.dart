@@ -11,6 +11,7 @@ class Cartpage extends StatelessWidget {
       
       appBar: AppBar(
         backgroundColor:context.canvasColor ,
+        title: "My Cart".text.xl.bold.make(),
       ),
       body:Container(
         child: Center(child: "Comming Soon!".text.bold.xl.make()),

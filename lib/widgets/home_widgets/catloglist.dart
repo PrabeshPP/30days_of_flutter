@@ -12,7 +12,7 @@ class CatlogList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: CatlogModel.items!.length,
         itemBuilder: (context, index) {
-          final catalog = CatlogModel.items![index];
+          final catalog = CatlogModel.getByPosition(index);
           return InkWell(onTap:()=>Navigator.push(context, 
           MaterialPageRoute(builder: (context)=>Homedetailspage(catalog: catalog,)))
             ,child: CatalogItems(catalog: catalog));
