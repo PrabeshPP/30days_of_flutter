@@ -33,9 +33,13 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          "All".text.xl.make().pOnly(left: 20),
+          "All".text.xl.color(context.accentColor).make().pOnly(left: 20),
           ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: "Buying not available yet!".text.bold.make(),duration: Duration(seconds: 1),))
+                        ;
+                  },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(StadiumBorder()),
                     backgroundColor: MaterialStateProperty.all(Colors.orange),
@@ -66,10 +70,16 @@ class __CartListState extends State<_CartList> {
           leading: Icon(
             Icons.done,
             size: 30,
+            color: context.accentColor,
           ),
-          trailing: IconButton(onPressed: (){}, icon: Icon(Icons.remove_circle_outline,
-          size: 30,)),
-          title: "Item1".text.make(),
+          trailing: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.remove_circle_outline,
+                size: 30,
+                color: context.accentColor,
+              )),
+          title: "Item1".text.color(context.accentColor).make(),
         );
       },
     );
