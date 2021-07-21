@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catloglist.dart';
 import 'package:flutter_application_1/widgets/home_widgets/header_widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -36,6 +38,9 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed:()=>Navigator.pushNamed(
+        context, MyRoutes.cartRoute),
+      child: Icon(CupertinoIcons.cart,)),
         backgroundColor: Mytheme.creamColor,
         body: SafeArea(
           
@@ -53,8 +58,12 @@ class _HomepageState extends State<Homepage> {
                       child: CircularProgressIndicator().py64().py64().py64().py64().py32(),
                     )
                 ],
-              )),
-        ));
+              )
+              ),
+
+        )
+        )
+        ;
   }
 }
 

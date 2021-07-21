@@ -42,18 +42,19 @@ class CatalogItems extends StatelessWidget {
                 .textStyle(context.captionStyle!)
                 .make(),
             ButtonBar(
-              alignment: MainAxisAlignment.spaceAround,
+              alignment: MainAxisAlignment.spaceBetween,
               buttonPadding:EdgeInsets.zero,
               
               children: [
                 "\$${catalog.price}".toString().text.color(Colors.red).bold.make(),
+                
                ElevatedButton(style:ButtonStyle(
 
                  backgroundColor:MaterialStateProperty.all(Colors.deepOrangeAccent),
                  shape:MaterialStateProperty.all(StadiumBorder())
                ),
                  onPressed: (){},
-                child:"buy".toUpperCase().toString().text.make()),
+                child:"buy".toUpperCase().toString().text.make()).px12(),
                 
                 
                 
