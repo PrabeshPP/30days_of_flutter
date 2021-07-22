@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/catlog.dart';
 
 class Cart {
+  static final cartModel = Cart._internal();
+
+  Cart._internal();
+
+  factory Cart() => cartModel;
+
   CatlogModel? _catalog;
-  final List<int> _itemIds = [];
+  static List<int> _itemIds = [];
 
   get catalog => _catalog;
 
@@ -24,4 +30,6 @@ class Cart {
   void removeItems(Items items) {
     _itemIds.remove(items.id.toInt());
   }
+
+  _internal() {}
 }

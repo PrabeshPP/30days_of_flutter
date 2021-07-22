@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/cartmodel.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Cartpage extends StatelessWidget {
@@ -28,17 +29,19 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = Cart();
     return SizedBox(
       height: 50,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          "All".text.xl.color(context.accentColor).make().pOnly(left: 20),
+          "\$${_cart.totalPrice}".text.xl.color(context.accentColor).make().pOnly(left: 20),
           ElevatedButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: "Buying not available yet!".text.bold.make(),duration: Duration(seconds: 1),))
-                        ;
+                      content: "Buying not available yet!".text.bold.make(),
+                      duration: Duration(seconds: 1),
+                    ));
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(StadiumBorder()),
@@ -63,8 +66,10 @@ class _CartList extends StatefulWidget {
 class __CartListState extends State<_CartList> {
   @override
   Widget build(BuildContext context) {
+    final _cart = Cart();
+
     return ListView.builder(
-      itemCount: 5,
+      itemCount: _cart.items!.length,
       itemBuilder: (context, index) {
         return ListTile(
           leading: Icon(
@@ -79,7 +84,8 @@ class __CartListState extends State<_CartList> {
                 size: 30,
                 color: context.accentColor,
               )),
-          title: "Item1".text.color(context.accentColor).make(),
+          title:
+              _cart.items![index].name.text.color(context.accentColor).make(),
         );
       },
     );
