@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/cartmodel.dart';
 import 'package:flutter_application_1/models/catlog.dart';
 import 'package:flutter_application_1/screens/home_page_detail.dart';
+import 'package:flutter_application_1/widgets/home_widgets/add_to_cart.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catlogImage.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -83,33 +84,3 @@ class CatalogItems extends StatelessWidget {
   }
 }
 
-class AddToCart extends StatefulWidget {
-  final Items catalog;
-  const AddToCart({Key? key, required this.catalog}) : super(key: key);
-
-  @override
-  _AddToCartState createState() => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
-  bool isadded = false;
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-        onPressed: () {
-          isadded = isadded.toggle();
-          final _catalog = CatlogModel();
-          final _cart = Cart();
-          _cart.addItems(widget.catalog);
-          _cart.catalog = _catalog;
-          setState(() {});
-        },
-        icon: isadded
-            ? Icon(Icons.done)
-            : Icon(
-                CupertinoIcons.cart_fill_badge_plus,
-                size: 35,
-                color: Colors.orange,
-              ));
-  }
-}

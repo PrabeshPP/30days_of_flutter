@@ -35,7 +35,12 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          "\$${_cart.totalPrice}".text.xl.color(context.accentColor).make().pOnly(left: 20),
+          "\$${_cart.totalPrice}"
+              .text
+              .xl
+              .color(context.accentColor)
+              .make()
+              .pOnly(left: 20),
           ElevatedButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -56,38 +61,45 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatefulWidget {
-  const _CartList({Key? key}) : super(key: key);
-
-  @override
-  __CartListState createState() => __CartListState();
-}
-
-class __CartListState extends State<_CartList> {
+class _CartList extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final _cart = Cart();
 
-    return ListView.builder(
-      itemCount: _cart.items!.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(
-            Icons.done,
-            size: 30,
-            color: context.accentColor,
-          ),
-          trailing: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.remove_circle_outline,
-                size: 30,
-                color: context.accentColor,
-              )),
-          title:
-              _cart.items![index].name.text.color(context.accentColor).make(),
-        );
-      },
-    );
+    return _cart.items!.isEmpty
+        ? Nothing()
+        : ListView.builder(
+          
+            itemCount: _cart.items!.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: Image.network(_cart.items![index].image,
+                ).py12()
+                ,
+                trailing: IconButton(
+                    onPressed: () {
+                      _cart.removeItems(_cart.items![index]);
+                      ;
+                    },
+                    icon: Icon(
+                      Icons.remove_circle_outline,
+                      size: 30,
+                      color: Colors.red,
+                    )),
+                title: _cart.items![index].name.text
+                    .color(context.accentColor)
+                    .make(),
+              );
+            },
+          );
+  }
+}
+
+class Nothing extends StatelessWidget {
+  const Nothing({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return "Nothing to show".text.xl3.makeCentered();
   }
 }

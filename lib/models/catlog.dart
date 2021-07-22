@@ -1,11 +1,7 @@
 import 'dart:convert';
 
 class CatlogModel {
-   static final cat = CatlogModel._internal();
-  // ignore: unused_element
-  CatlogModel._internal();
-
-  factory CatlogModel() =>cat;
+ 
   static List<Items>? items;
   // get items by id
   Items getById(num id) =>

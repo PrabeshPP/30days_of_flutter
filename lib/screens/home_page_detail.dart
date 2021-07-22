@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:flutter_application_1/widgets/home_widgets/add_to_cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Homedetailspage extends StatelessWidget {
@@ -28,16 +28,18 @@ class Homedetailspage extends StatelessWidget {
                 .make()
                 .pOnly(right:74 ),
             ElevatedButton(
-              onPressed: () {},
-              child: Icon(
-                CupertinoIcons.cart_badge_plus,
-                size: 30,
-                color: Colors.white,
-              ),
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(context.theme.buttonColor),
-                  shape: MaterialStateProperty.all(StadiumBorder())),
-            ).wh(100, 40),
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+                shape: MaterialStateProperty.all(StadiumBorder(),
+                )
+              ),
+            
+              onPressed: () {
+
+              },
+              child: AddToCart(catalog: catalog),
+              
+              ).wh(100, 40),
             ElevatedButton(
                     onPressed: () {},
                     child: "Buy".toString().text.bold.make(),
