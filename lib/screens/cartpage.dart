@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/models/cartmodel.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -29,18 +30,23 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _cart = Cart();
+    final Cart? _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 50,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          "\$${_cart.totalPrice}"
-              .text
-              .xl
-              .color(context.accentColor)
-              .make()
-              .pOnly(left: 20),
+          VxConsumer(
+              builder: (context, x, y) {
+                return "\$${_cart!.totalPrice}"
+                    .text
+                    .xl
+                    .color(context.accentColor)
+                    .make()
+                    .pOnly(left: 20);
+              },
+              mutations: {RemoveMutation},
+              notifications: {}),
           ElevatedButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -61,28 +67,28 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatelessWidget{
+class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _cart = Cart();
+    VxState.watch(context, on: [RemoveMutation]);
+    final Cart? _cart = (VxState.store as MyStore).cart;
 
-    return _cart.items!.isEmpty
+    return _cart!.items!.isEmpty
         ? Nothing()
         : ListView.builder(
-          
             itemCount: _cart.items!.length,
             itemBuilder: (context, index) {
               return ListTile(
-                leading: Image.network(_cart.items![index].image,
-                ).py12()
-                ,
+                leading: Image.network(
+                  _cart.items![index].image,
+                ).py12(),
                 trailing: IconButton(
                     onPressed: () {
-                      _cart.removeItems(_cart.items![index]);
+                      RemoveMutation(_cart.items![index]);
                       ;
                     },
                     icon: Icon(
-                      Icons.remove_circle_outline,
+                     CupertinoIcons.cart_fill_badge_minus,
                       size: 30,
                       color: Colors.red,
                     )),
